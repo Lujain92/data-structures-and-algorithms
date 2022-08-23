@@ -1,5 +1,7 @@
 'use strict';
 
+const { not } = require("cheerio/lib/api/traversing");
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
@@ -60,10 +62,15 @@ Write a function named notInFirstArray that, given two arrays as input, uses fil
 
 For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
-
 const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
-};
+
+  
+  let xy =arr.filter(value => !(value in forbiddenValues))
+                     
+        
+      
+      return xy
+    }
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
