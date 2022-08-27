@@ -124,11 +124,16 @@ let starWarsData = [{
   birth_year: '19BBY',
   gender: 'female'
 }];
-
 const returnNames = (arr) => {
-  // Solution code here...
+  let arr2=arr.reduce((acc,val,i)=>{
+    acc[i]= val.name
+    return acc
+    
+    
+  }
+    ,[])
+  return arr2
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
@@ -136,9 +141,15 @@ Write a function named reversedString that takes in a string and returns a strin
 
 Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
 ------------------------------------------------------------------------------------------------ */
-
 const reversedString = (str) => {
-  // Solution code here...
+  let arrayy=String(str).split("")
+  let arr2 = arrayy.reduce((acc,val,i)=>{
+    acc = val+acc
+    return acc
+    
+  }
+    ,"")
+  return arr2
 };
 
 /* ------------------------------------------------------------------------------------------------
