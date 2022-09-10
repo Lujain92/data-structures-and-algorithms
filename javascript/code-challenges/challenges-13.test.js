@@ -6,12 +6,33 @@ CHALLENGE 1 - Review
 Write a function named longestString that takes in an array of strings and returns the index position of the longest string. 
 ------------------------------------------------------------------------------------------------ */
 
-const longestString = (arr) => {
-  let long=arr.filter(str=>{
 
-  })
-};
+// const longestString = (arr) => {
+//   let max=0
+//   let st=0
+//   arr.forEach(str=>{
+//     if (str.length > max){
+//       max=str.length
+//       let st=arr.indexOf(str)
+//     }
+    
+
+//   })
   
+//   return st
+// };
+  
+const longestString = (arr) => {
+  let word = "";
+  let index = -1;
+  arr.forEach(item => {
+    if (word.length < item.length){
+      word = item;
+      index= arr.indexOf(item);
+    }
+  })
+  return index;
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -45,9 +66,14 @@ Write a function named standardizePhoneNumbers that takes in an array of phone n
 
 For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
-
 const standardizePhoneNumbers = (arr) => {
-  
+  const toReturn = [];
+  arr.forEach(item => {
+
+    toReturn.push(item.substring(1,4)+item.substring(6,9)+item.substring(10,14))
+    
+  })
+  return toReturn;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,9 +85,18 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-  // Solution code here...
+  let x = "";
+  let index = 0;
+  for (const s of str){
+    if(index%2 !== 0){
+      x += s;
+      index++;
+    } else {
+      index++;
+    }
+  }
+  return x;
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 
 
@@ -69,8 +104,16 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = (arr) => {
-  // Solution code here...
+  const newArr = arr.filter(itemVal => {
+    return itemVal.includes(':)')
+  })
+  let toArr = false;
+  if(newArr.length === arr.length){
+    toArr = true;
+  }
+  return toArr;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
