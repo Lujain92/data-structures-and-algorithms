@@ -28,9 +28,10 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  let newarr=arr.map(item=>item.charAt(0).toUpperCase() +item.slice(1)
+  )
+  return newarr
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
@@ -103,7 +104,15 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  let nw=arr.filter(item=>{
+    if (item.mass> 77){
+      return item.name
+    }
+  }
+  )
+  let x=nw.map(item=>item.name)
+  let final=x.join(" - ")
+  return final
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -121,8 +130,12 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
-};
+  if (property === "price"){
+    return (arr.sort((a, b) => {return(a.price - b.price)}))
+  } else if (property === "name"){
+    return (arr.sort((a,b) =>{return(a.name.localeCompare(b.name))}))
+  }
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 
@@ -137,7 +150,7 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-  // Solution code here...
+  return /^https:\/\//.test(url)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -160,7 +173,28 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+  const helpCheck = (r1, c1, r2, c2, r3, c3) => {
+    let ans;
+    if (board[r1][c1] === board[r2][c1] && board[r1][c1] === board[r3][c1]){
+      ans = true;
+    } else if (board[r1][c2] === board[r2][c2] && board[r1][c2] === board[r3][c2]){
+      ans =  true;
+    } else if (board[r1][c3] === board[r2][c3] && board[r1][c3] === board[r3][c3]){
+      ans =  true;
+    } else if (board[r1][c1] === board[r2][c2] && board[r1][c1] === board[r3][c3]){
+      ans =  true;
+    } else if (board[r1][c3] === board[r2][c3] && board[r1][c3] === board[r3][c1]){
+      ans =  true;
+    } else if (board[r2][c1] === board[r2][c2] && board[r2][c1] === board[r2][c3]){
+      ans =  true;
+    } else if (board[r3][c1] === board[r3][c2] && board[r3][c1] === board[r3][c3]){
+      ans =  true;
+    } else {
+      ans =  false;
+    }
+    return ans;
+  }
+  return helpCheck(0,0,1,1,2,2);
 };
 
 /* ------------------------------------------------------------------------------------------------
